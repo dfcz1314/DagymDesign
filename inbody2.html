@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>차트</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- 제이 쿼리 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="chagneDataButton">
+      <button id="weight">체중</button>
+      <button id="rmr">기초 대사량</button>
+      <button id="bfp">체지방률</button>
+      <button id="smm">골격근량</button>
+    </div>
+    <canvas id="myChart" width="400px" height="300px"></canvas>
+    <script>
+      let ctx = document.getElementById("myChart").getContext("2d");
+
+      // 체중
+      let weightData = {
+        labels: ["", "월", "화", "수", "목", "금", "토", "일", ""],
+        datasets: [
+          {
+            data: [, 85, 83, 84, 87, 89, 91, 80],
+            // 뒷배경 색깔
+            backgroundColor: ["rgba(0, 0, 0, 0)"],
+            // 선 색깔
+            borderColor: [
+              "rgba(246, 0, 0, 1)",
+              "rgba(246, 0, 0, 1)",
+              "rgba(246, 0, 0, 1)",
+              "rgba(246, 0, 0, 1)",
+              "rgba(246, 0, 0, 1)",
+              "rgba(246, 0, 0, 1)",
+              "rgba(246, 0, 0, 1)",
+              "rgba(246, 0, 0, 1)",
+            ],
+            // 선 굵기
+            borderWidth: 3,
+            // 선 곡선률
+            lineTension: [0],
+          },
+        ],
+      };
+
+      // 기초 대사량(Resting Metabolic Rate)
+      let rmrData = {
+        labels: ["", "월", "화", "수", "목", "금", "토", "일", ""],
+        datasets: [
+          {
+            fillColor: "#79D1CF",
+            strokeColor: "#79D1CF",
+            data: [, 1840, 1900, 2020, 2200, 2300, 2400, 2500],
+            // 뒷배경 색깔
+            backgroundColor: ["rgba(0, 0, 0, 0)"],
+            // 데이터 점 색깔
+            borderColor: [
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+            ],
+            // 선 굵기
+            borderWidth: 1,
+            // 선 곡선률
+            lineTension: [0],
+          },
+        ],
+      };
+
+      // 체지방률(Body fat percentage)
+      let bfpData = {
+        labels: ["", "월", "화", "수", "목", "금", "토", "일", ""],
+        datasets: [
+          {
+            fillColor: "#79D1CF",
+            strokeColor: "#79D1CF",
+            data: [, 20, 21, 20, 18, 16, 14, 16],
+            // 뒷배경 색깔
+            backgroundColor: ["rgba(0, 0, 0, 0)"],
+            // 데이터 점 색깔
+            borderColor: [
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+            ],
+            // 선 굵기
+            borderWidth: 1,
+            // 선 곡선률
+            lineTension: [0],
+          },
+        ],
+      };
+
+      // 골격근량(Skeletal muscle mass)
+      let smmData = {
+        labels: ["", "월", "화", "수", "목", "금", "토", "일", ""],
+        datasets: [
+          {
+            fillColor: "#79D1CF",
+            strokeColor: "#79D1CF",
+            data: [, 40.3, 42.5, 43.5, 43, 44.5, 45, 48],
+            // 뒷배경 색깔
+            backgroundColor: ["rgba(0, 0, 0, 0)"],
+            // 데이터 점 색깔
+            borderColor: [
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+              "rgba(0, 0, 0, 1)",
+            ],
+            // 선 굵기
+            borderWidth: 1,
+            // 선 곡선률
+            lineTension: [0],
+          },
+        ],
+      };
+
+      //id 값에 따라 동적으로 변수 변경
+      let dataButton = document.querySelector("#chagneDataButton");
+      dataButton.addEventListener("click", function (e) {
+        let id = e.target.id;
+        let idData = eval(id + "Data");
+
+        myChart.data = idData;
+        myChart.update();
+      });
+
+      // let weight = document.getElementById("weight");
+      // weight.addEventListener();
+      // let rmr = document.getElementById("rmr");
+      // rmr.addEventListener();
+      // let bfp = document.getElementById("bfp");
+      // bfp.addEventListener();
+      // let smm = document.getElementById("smm");
+      // smm.addEventListener();
+
+      let myChart = new Chart(ctx, {
+        type: "line",
+        data: weightData,
+
+        options: {
+          // 레이아웃
+          //   layout: {
+          //     padding: {
+          //       left: 50,
+          //       right: 0,
+          //       top: 0,
+          //       bottom: 0,
+          //     },
+          //   },
+          responsive: false,
+          //제목
+          title: {
+            display: true,
+            text: "체중",
+            fontSize: 20,
+            // fontFamily: "",
+            // fontColor: "red",
+          },
+
+          legend: {
+            // 위에 라벨 숨기기
+            display: false,
+            // labels: { fontColor: "rgb(255, 99, 132)", fontSize: 20 },
+          },
+          scales: {
+            yAxes: [
+              {
+                //왼쪽 라벨 없애기
+                display: false,
+                ticks: {
+                  //제로 부터 시작
+                  beginAtZero: false,
+                  fontSize: 20,
+                },
+                gridLines: {
+                  display: false,
+                },
+              },
+            ],
+            // x축 관련
+            xAxes: [
+              {
+                gridLines: {
+                  display: true,
+                },
+                ticks: {
+                  //   beginAtZero: true,
+                  fontSize: 20,
+                },
+              },
+            ],
+          },
+          // 올리면 보이는 정보 안보이게 하기
+          tooltips: {
+            enabled: false,
+          },
+          hover: {
+            animationDuration: 0,
+          },
+          animation: {
+            duration: 1,
+            onComplete: function () {
+              var chartInstance = this.chart,
+                ctx = chartInstance.ctx;
+              // 폰트 옵션들
+              ctx.font = Chart.helpers.fontString(
+                // Chart.defaults.global.defaultFontSize,
+                15,
+                Chart.defaults.global.defaultFontStyle,
+                Chart.defaults.global.defaultFontFamily
+              );
+              ctx.fillStyle = "black";
+              ctx.textAlign = "center";
+              ctx.textBaseline = "bottom";
+
+              this.data.datasets.forEach(function (dataset, i) {
+                var meta = chartInstance.controller.getDatasetMeta(i);
+                meta.data.forEach(function (line, index) {
+                  var data = dataset.data[index];
+
+                  ctx.fillText(data, line._model.x, line._model.y - 5);
+                });
+              });
+            },
+          },
+          // 옵션 끝
+        },
+      });
+      //   데이터 값 넣기
+      //   rmr.data.datasets[0].data = [1, 2, 3, 4, 5, 6, 7];
+      // 라벨 변경
+      //   rmr.data.labels = [1, 2, 3, 4, 5, 6, 7];
+    </script>
+  </body>
+</html>
