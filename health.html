@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- 아이콘-->
+    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+    <title>회원 관리</title>
+
+    <link href="css/app.css" rel="stylesheet" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 운동 종류 -->
+      <div>
+        <select name="exr">
+          <option value="">운동 종류</option>
+          <option value="상체">상체</option>
+          <option value="하체">하체</option>
+          <option value="유산소">유산소</option>
+        </select>
+      </div>
+
+      <!-- 운동 부위 -->
+      <div></div>
+
+      <!-- 운동명 영역 -->
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th width="60%" class="er_name">운동 명</th>
+            <th width="5%" class="er_count">횟수</th>
+            <th width="5%" class="text_center">세트</th>
+            <th width="5%" class="text_center">무게</th>
+            <th width="7%" class="text_center">시간(분)</th>
+            <th width="20%" class="text_center">기능</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr class="tmain">
+            <td class="er_name">스쿼트</td>
+            <td class="er_count">15</td>
+            <td class="er_set text_center">3</td>
+            <td class="er_weight text_center">0</td>
+            <td class="er_time text_center">15</td>
+            <td class="text_center">
+              <button class="custom_btn" id="add">추가</button>
+              <button class="custom_btn" id="remove">삭제</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="ex_chice">이러한 운동은 어떠신가요?</div>
+      <div class="parent" style="width: 50%; height: 50%; margin: 0 auto">
+        <div class="child" style="width: 30px; background-color: aqua">
+          <img src="" class="img cycle" />
+          분/ 사이클링
+        </div>
+        <div class="child" style="width: 30px; background-color: aquamarine">
+          <img src="" class="img running" />
+          분/ 달리기
+        </div>
+        <div
+          class="child"
+          style="width: 30px; background-color: blanchedalmond"
+        >
+          <img src="" class="img squate" />
+          세트수/ 스쿼트
+        </div>
+      </div>
+    </div>
+    <script>
+      var maxAppend = 1;
+
+      $(document).ready(function () {
+        $("#add").click(function () {
+          $(".tbody").append(
+            '<tr><td class="er_name">스쿼트</td><td class="er_count">15</td><td class="er_set text_center">3</td><td class="er_weight text_center">0</td><td class="er_time text_center">15</td><td class="text_center"><button class="custom_btn" id="add">추가</button><button class="custom_btn" >삭제</button></td></tr>'
+          );
+        });
+        $("#remove").click(function () {
+          for (var i = 0; i < 5; i++) {
+            $(".tmain").empty();
+          }
+        });
+      });
+    </script>
+
+    <!-- CSS 영역 -->
+    <style>
+      .ex_chice {
+        font-size: 28px;
+        font-family: "Song Myung";
+        text-align: center;
+        color: #080808;
+        font-weight: bold;
+      }
+      .parent {
+        display: flex;
+        flex-direction: row;
+      }
+      .child {
+        flex: 1;
+        text-align: center;
+        vertical-align: bottom;
+        font-size: 15px;
+        font-weight: bold;
+        color: #5b5c5e;
+      }
+      .img {
+        width: 100px;
+        height: 100px;
+      }
+      .custom_btn {
+        background-color: #4a5164;
+        color: #fff;
+        border-radius: 18px;
+        padding: 8px 30px;
+        border: none;
+        cursor: pointer;
+      }
+      .text_center {
+        text-align: center;
+      }
+    </style>
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -12,30 +12,26 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales/ko.js"></script>
+
     <!-- 제이 쿼리 -->
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
-    <!-- 푸드 js -->
-    <script src="calendar.jss"></script>
-
-    <!-- 푸드 css -->
-    <link href="food.css" rel="stylesheet" />
+    <!-- 캘린더 js -->
+    <script src="cal.js"></script>
   </head>
   <body>
-    <!-- <a
-      href="ex11.html"
-      onclick="window.open(this.href, '_blank', 'width=650px,height=400px,toolbars=no,scrollbars=no'); return false;"
-      value="adasdas"
-      >ㅁㄴㅇㄻㅇㄴㄻㄴㅇㄻㅇㄴㄹ</a
-    > -->
-
+    <style>
+      .fc-toolbar-chunk {
+        /* 일렬로 나란히 */
+        display: flex;
+        /* 수직 가운데 정렬 */
+        align-items: center;
+      }
+    </style>
     <!-- 캘린더 -->
-    <div>
-      <button id="toggleButton">보이기</button>
-    </div>
-    <div id="calendar"></div>
+    <div id="calendar" style="min-width: 300px"></div>
   </body>
 </html>

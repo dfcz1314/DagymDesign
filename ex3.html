@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      src="https://ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js"
+      data-cf-settings="100752039a7e60f6a2c8f47d-|49"
+    ></script>
+  </head>
+  <body>
+    <div style="width: 90%">
+      <canvas id="canvas"></canvas>
+    </div>
+    <script>
+      var randomScalingFactor = function () {
+        return Math.round(Math.random() * 100);
+      };
+      window.chartColors = {
+        red: "rgb(255, 99, 132)",
+        orange: "rgb(255, 159, 64)",
+        yellow: "rgb(255, 205, 86)",
+        green: "rgb(75, 192, 192)",
+        blue: "rgb(54, 162, 235)",
+        purple: "rgb(153, 102, 255)",
+        grey: "rgb(201, 203, 207)",
+      };
+      var config = {
+        type: "line",
+        data: {
+          labels: [["(A)", "Walking"], "(B)", "(C)", "(D)"],
+          datasets: [
+            {
+              label: "My First dataset",
+              fill: false,
+              backgroundColor: window.chartColors.red,
+              borderColor: window.chartColors.red,
+              data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+              ],
+            },
+            {
+              label: "My Second dataset",
+              fill: false,
+              backgroundColor: window.chartColors.blue,
+              borderColor: window.chartColors.blue,
+              data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          title: {
+            display: true,
+            text: "Chart with Multiline Labels",
+          },
+        },
+      };
+      window.onload = function () {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myLine = new Chart(ctx, config);
+      };
+    </script>
+  </body>
+</html>
