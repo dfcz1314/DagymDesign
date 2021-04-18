@@ -20,6 +20,15 @@
     <canvas id="bfp" width="300px" height="200px"></canvas>
     <canvas id="smm" width="300px" height="200px"></canvas>
 
+    <form name="inbodyForm" id="inbodyForm" action="#" method="post">
+      체중(kg) : <input type="text" name="inbody_weight" /><br />
+      기초 대사량(kcal) : <input type="text" name="inbody_rmr" /><br />
+      체지방률(%) : <input type="text" name="inbody_bfp" /><br />
+      골격근량(kg) : <input type="text" name="inbody_smm" /><br />
+      날짜 입력<input type="datetime-local" /><br />
+      <button type="submit">전송</button>
+    </form>
+
     <script>
       let weight = document.getElementById("weight").getContext("2d");
       let rmr = document.getElementById("rmr").getContext("2d");
@@ -66,7 +75,16 @@
         let myChart = new Chart(name, {
           type: "line",
           data: {
-            labels: ["", "월", "화", "수", "목", "금", "토", "일", ""],
+            labels: [
+              ["2021년 4월 22일", "오후 2시 30분"],
+              "화",
+              "수",
+              "목",
+              "금",
+              "토",
+              "일",
+              "",
+            ],
             datasets: [
               {
                 data: data,
@@ -74,14 +92,23 @@
                 backgroundColor: ["rgba(0, 0, 0, 0)"],
                 // 선 색깔
                 borderColor: [
-                  "rgba(246, 0, 0, 1)",
-                  "rgba(246, 0, 0, 1)",
-                  "rgba(246, 0, 0, 1)",
-                  "rgba(246, 0, 0, 1)",
-                  "rgba(246, 0, 0, 1)",
-                  "rgba(246, 0, 0, 1)",
-                  "rgba(246, 0, 0, 1)",
-                  "rgba(246, 0, 0, 1)",
+                  //첫번째가 선 색깔 나머지 점 테투리 색
+                  "rgba(0, 0, 0, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                ],
+                //점 색깔
+                pointBackgroundColor: [
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
+                  "rgba(255, 255, 255, 1)",
                 ],
                 // 선 굵기
                 borderWidth: 3,
