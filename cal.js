@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
 
@@ -59,7 +58,7 @@ alert(arrCal[0].title);
 //   },
 // });
 // calendar.render();
-=======
+
 //달력 관련
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -122,4 +121,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // console.log(calendar.getOption("locale"));
 });
->>>>>>> c2de1c3d04cb9f8322b548974c9494d5b475b428
